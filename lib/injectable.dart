@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
-import 'package:note/presentation/injectable.iconfig.dart';
+
+import 'injectable.iconfig.dart';
 
 final GetIt getIt = GetIt.instance;
 
