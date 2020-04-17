@@ -10,6 +10,10 @@ abstract class ValueObject<T>{
 
   bool isValid()=> value.isRight(); 
 
+  T getOrElse(T dflt) {
+    return value.getOrElse(() => dflt);
+  }
+
   @override
   bool operator == (Object o){
     if(identical(this, o)) return true;
