@@ -17,3 +17,11 @@ Either<ValueFailure<String>, String> validatePassword(String input){
     return Left(ValueFailure.shortPassword(failedValue: input));
   }
 }
+
+Either<ValueFailure<String>, String> validateSingleLine(String input){
+  if (input.contains('n/')) {
+    return Left(ValueFailure.empty(failedValue: input));
+  }else{
+    return Right(input);
+  }
+}
