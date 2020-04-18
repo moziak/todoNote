@@ -9,10 +9,11 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state){
+        //print("Check state $state");
         state.map(
           initial: (_){},
-          authenticated: (_) => ExtendedNavigator.ofRouter().pushReplacementNamed(Routes.splashScreen) ,
-          unauthenticated: null
+          authenticated: (_) => ExtendedNavigator.ofRouter<Router>().pushReplacementNamed(Routes.signInScreen),
+          unauthenticated: (_) => ExtendedNavigator.ofRouter<Router>().pushReplacementNamed(Routes.signInScreen) 
           );
       },
       child: _PageWidget(),
@@ -23,6 +24,7 @@ class SplashScreen extends StatelessWidget {
 class _PageWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    
     return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(),

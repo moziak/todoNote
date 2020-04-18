@@ -12,6 +12,7 @@ import 'package:note/infrastructure/auth/firebase_user_mapper.dart';
 @prod
 @lazySingleton
 @RegisterAs(IAuthFacade)
+@injectable
 class FirebaseAuthFacade implements IAuthFacade{
 
   final FirebaseAuth _firebaseAuth;
@@ -59,5 +60,13 @@ class FirebaseAuthFacade implements IAuthFacade{
 
   @override
   Future<Option<User>> getSignedInUser() => _firebaseAuth.currentUser().then((u) => optionOf(_firebaseUserMapper.toDomain(u)));
+
+  @override
+  Future<void> signOut() async {
+    return Future.wait([
+      //_googleSignIn.signOut(),
+      _firebaseAuth.signOut(),
+    ]);
+  }
   
 }

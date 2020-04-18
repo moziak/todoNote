@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:injectable/injectable.dart';
 import 'package:note/bloc/bloc/counter_bloc.dart';
+import 'package:note/presentation/app.dart';
+
+import 'injectable.dart';
 
 void main() {
-  runApp(MyApp());
+  print("Test");
+  print("Test2");
+  WidgetsFlutterBinding.ensureInitialized();
+  configureInjection(Environment.prod);
+  runApp(NoteApp());
 }
 
 class MyApp extends StatelessWidget {

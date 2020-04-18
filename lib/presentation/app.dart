@@ -9,10 +9,15 @@ import '../injectable.dart';
 class NoteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    print("Inside app");
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (_) => getIt<AuthBloc>()..add(AuthEvent.authCheckRequested()))
+          create: (_){
+            final bloc = getIt<AuthBloc>();
+            bloc.add(AuthEvent.authCheckRequested());
+            return bloc;
+            })
       ],
       child: MaterialApp(
         title: 'Note App',
