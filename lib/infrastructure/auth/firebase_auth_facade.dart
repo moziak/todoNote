@@ -48,14 +48,16 @@ class FirebaseAuthFacade implements IAuthFacade{
     final passwordStr = password.value.getOrElse(() => 'INVALID PASSWORD');
 
     try {
-      return _firebaseAuth.signInWithEmailAndPassword(email: emailAddressStr, password: passwordStr).then((_) => right(unit));
-    } on PlatformException catch (e) {
+      return await _firebaseAuth.signInWithEmailAndPassword(email: emailAddressStr, password: passwordStr)
+      .then((_) => right(unit));
+    } catch (e) {
       if (e.code == 'ERROR_WRONG_PASSWORD' ||
           e.code == 'ERROR_USER_NOT_FOUND') {
         return left(const AuthFailure.invalidEmailAndPasswordCombination());
       }
       return left(const AuthFailure.serverError());
     }
+    
   }
 
   @override

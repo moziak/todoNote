@@ -25,3 +25,17 @@ Either<ValueFailure<String>, String> validateSingleLine(String input){
     return Right(input);
   }
 }
+
+Either<ValueFailure<String>, String> validateMaxStringLength(
+  String input,
+  int maxLength,
+) {
+  if (input.length <= maxLength) {
+    return right(input);
+  } else {
+    return left(ValueFailure.exceedingLength(
+      failedValue: input,
+      max: maxLength,
+    ));
+  }
+}

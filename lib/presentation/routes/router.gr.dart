@@ -9,10 +9,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:note/presentation/screens/splash.dart';
 import 'package:note/presentation/screens/sign_in_form.dart';
+import 'package:note/presentation/screens/note_screen.dart';
 
 abstract class Routes {
   static const splashScreen = '/';
   static const signInScreen = '/sign-in-screen';
+  static const noteScreen = '/note-screen';
 }
 
 class Router extends RouterBase {
@@ -33,6 +35,11 @@ class Router extends RouterBase {
       case Routes.signInScreen:
         return MaterialPageRoute<dynamic>(
           builder: (_) => SignInScreen(),
+          settings: settings,
+        );
+      case Routes.noteScreen:
+        return MaterialPageRoute<dynamic>(
+          builder: (_) => NoteScreen(),
           settings: settings,
         );
       default:

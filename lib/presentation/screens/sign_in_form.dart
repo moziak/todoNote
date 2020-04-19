@@ -1,8 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:note/application/auth/auth_bloc.dart';
 import 'package:note/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:note/injectable.dart';
+import 'package:note/presentation/routes/router.gr.dart';
 import 'package:styled_widget/styled_widget.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -30,7 +33,11 @@ class SignInScreen extends StatelessWidget {
                           'Invalid email and password combination'),
                   ).show(context);
                 }, 
-                (r) => (){});
+                (r){
+                  print("Successful");
+                  ExtendedNavigator.ofRouter<Router>().pushReplacementNamed(Routes.noteScreen);
+                  context.bloc<AuthBloc>().add(AuthEvent.authCheckRequested());
+                });
               });
           },
           builder: (context, state){
