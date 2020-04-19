@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:uuid/uuid.dart';
+import 'package:note/domain/core/errors.dart';
 
 import 'failures.dart';
 import 'value_validators.dart';
@@ -12,6 +13,12 @@ abstract class ValueObject<T>{
 
   T getOrElse(T dflt) {
     return value.getOrElse(() => dflt);
+  }
+
+  /// Throws [UnexpectedValueError] containing the [ValueFailure]
+  T getOrCrash() {
+    // id = identity - same as writing (right) => right
+    return value.fold((f) => throw UnexpectedValueError(f), id);
   }
 
   @override
