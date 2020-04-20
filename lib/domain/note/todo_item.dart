@@ -1,5 +1,7 @@
 
+import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:note/domain/core/failures.dart';
 import 'package:note/domain/core/value_objects.dart';
 import 'package:note/domain/note/value_object.dart';
 
@@ -19,5 +21,8 @@ abstract class TodoItem with _$TodoItem{
         done: false,
       );
 }
-    
-    
+
+extension TodoItemX on TodoItem{
+  Option<ValueFailure<dynamic>> get failureOption => name.failureOrUnit
+  .fold((f) => some(f), (_) => none());
+}   

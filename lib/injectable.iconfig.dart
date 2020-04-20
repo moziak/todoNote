@@ -10,6 +10,8 @@ import 'package:note/infrastructure/auth/firebase_user_mapper.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:note/infrastructure/auth/firebase_auth_facade.dart';
 import 'package:note/domain/auth/i_auth_facade.dart';
+import 'package:note/infrastructure/note/note_repository.dart';
+import 'package:note/domain/note/i_note_repository.dart';
 import 'package:note/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:note/application/auth/auth_bloc.dart';
 import 'package:get_it/get_it.dart';
@@ -27,6 +29,8 @@ void $initGetIt(GetIt g, {String environment}) {
   if (environment == 'prod') {
     g.registerLazySingleton<IAuthFacade>(
         () => FirebaseAuthFacade(g<FirebaseAuth>(), g<FirebaseUserMapper>()));
+    g.registerLazySingleton<INoteRepository>(
+        () => NoteRepository(g<Firestore>()));
   }
 }
 

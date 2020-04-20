@@ -1,8 +1,12 @@
+import 'dart:ui';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:note/domain/core/value_objects.dart';
 import 'package:note/domain/note/note.dart';
 import 'package:note/domain/note/todo_item.dart';
 import 'package:kt_dart/collection.dart';
+import 'package:note/domain/note/value_object.dart';
 
 part 'note_dtos.freezed.dart';
 part 'note_dtos.g.dart';
@@ -40,6 +44,17 @@ abstract class NoteDto with _$NoteDto {
   }
 }
 
+extension NoteDtoX on NoteDto {
+  Note toDomain() {
+    return Note(
+      id: UniqueId.fromFirebaseId(id),
+      body: NoteBody(body),
+      color: NoteColor(Color(color)),
+      todos: List3(todos.map((dto) => dto.toDomain()).toImmutableList()),
+    );
+  }
+}
+
 class ServerTimestampConverter implements JsonConverter<FieldValue, Object> {
   const ServerTimestampConverter();
 
@@ -70,4 +85,14 @@ abstract class TodoItemDto with _$TodoItemDto {
 
   factory TodoItemDto.fromJson(Map<String, dynamic> json) =>
       _$TodoItemDtoFromJson(json);
+}
+
+extension TodoItemDtoX on TodoItemDto {
+  TodoItem toDomain() {
+    return TodoItem(
+      id: UniqueId.fromFirebaseId(id),
+      name: TodoName(name),
+      done: done,
+    );
+  }
 }

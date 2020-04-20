@@ -1,6 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:note/domain/auth/value_objects.dart';
+import 'package:note/domain/core/failures.dart';
 import 'package:note/domain/core/value_objects.dart';
 
 part 'user.freezed.dart';
@@ -13,3 +15,12 @@ abstract class User with _$User{
     @required EmailAddress emailAddress,
   }) = _User;
 }
+
+extension UserX on User{
+  Option<ValueFailure<dynamic>> get failureOption {
+    return name.failureOrUnit
+        .andThen(emailAddress.failureOrUnit)
+        .fold((l) => some(l), (r) => none());
+  }
+}
+

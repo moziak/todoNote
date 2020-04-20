@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:kt_dart/collection.dart';
 import 'package:note/domain/core/failures.dart';
 
 Either<ValueFailure<String>, String> validateEmailAddress(String input){
@@ -34,6 +35,26 @@ Either<ValueFailure<String>, String> validateMaxStringLength(
     return right(input);
   } else {
     return left(ValueFailure.exceedingLength(
+      failedValue: input,
+      max: maxLength,
+    ));
+  }
+}
+
+Either<ValueFailure<String>, String> validateStringNotEmpty(String input) {
+  if (input.isEmpty) {
+    return left(ValueFailure.empty(failedValue: input));
+  } else {
+    return right(input);
+  }
+}
+
+Either<ValueFailure<KtList<T>>, KtList<T>> validateMaxListLength<T>(
+    KtList<T> input, int maxLength) {
+  if (input.size <= maxLength) {
+    return right(input);
+  } else {
+    return left(ValueFailure.listTooLong(
       failedValue: input,
       max: maxLength,
     ));

@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:dartz/dartz.dart';
+import 'package:kt_dart/collection.dart';
 import 'package:note/domain/core/failures.dart';
 import 'package:note/domain/core/value_objects.dart';
 import 'package:note/domain/core/value_validators.dart';
@@ -80,4 +81,22 @@ class List3<T> extends ValueObject<KtList<T>> {
   bool get isFull {
     return length == maxLength;
   }
+}
+
+class TodoName extends ValueObject<String> {
+  @override
+  final Either<ValueFailure<String>, String> value;
+
+  static const maxLength = 30;
+
+  factory TodoName(String input) {
+    assert(input != null);
+    return TodoName._(
+      validateMaxStringLength(input, maxLength)
+          .flatMap(validateStringNotEmpty)
+          .flatMap(validateSingleLine),
+    );
+  }
+
+    const TodoName._(this.value);
 }
