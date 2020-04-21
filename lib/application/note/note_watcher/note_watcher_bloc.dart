@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:kt_dart/collection.dart';
 import 'package:meta/meta.dart';
 import 'package:note/domain/note/i_note_repository.dart';
@@ -14,6 +15,8 @@ part 'note_watcher_event.dart';
 part 'note_watcher_state.dart';
 
 part 'note_watcher_bloc.freezed.dart';
+
+@injectable
 class NoteWatcherBloc extends Bloc<NoteWatcherEvent, NoteWatcherState> {
   
   final INoteRepository _noteRepository;

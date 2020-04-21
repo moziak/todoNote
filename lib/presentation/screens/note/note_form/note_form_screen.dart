@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:note/application/note/note_form/note_form_bloc.dart';
 import 'package:note/domain/note/note.dart';
 import 'package:note/injectable.dart';
+import 'package:note/presentation/routes/router.gr.dart';
 import 'package:note/presentation/screens/note/note_form/widget/add_todo_tile_widget.dart';
 import 'package:note/presentation/screens/note/note_form/widget/body_field_widget.dart';
 import 'package:note/presentation/screens/note/note_form/widget/color_field_widget.dart';
@@ -51,9 +53,10 @@ class NoteFormScreen extends HookWidget {
                 (_) {
                   // Can't be just a simple pop. If another route (like a Flushbar) is on top of stack, we'll need to pop even that to get to
                   // the overview page.
-                  // TODO : Implement this route 
+                  
                   //Router.navigator.popUntil((route) =>
                       //route.settings.name == Router.notesOverviewPage);
+                  ExtendedNavigator.ofRouter<Router>().popUntil((route) => route.settings.name == Routes.noteScreen);
                 },
               );
             },

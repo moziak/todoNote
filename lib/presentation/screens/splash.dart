@@ -12,7 +12,7 @@ class SplashScreen extends StatelessWidget {
         //print("Check state $state");
         state.map(
           initial: (_){},
-          authenticated: (_) => ExtendedNavigator.ofRouter<Router>().pushReplacementNamed(Routes.signInScreen),
+          authenticated: (_) => ExtendedNavigator.ofRouter<Router>().pushReplacementNamed(Routes.noteScreen),
           unauthenticated: (_) => ExtendedNavigator.ofRouter<Router>().pushReplacementNamed(Routes.signInScreen) 
           );
       },

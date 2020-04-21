@@ -7,6 +7,7 @@ import 'package:note/application/auth/sign_in_form/sign_in_form_bloc.dart';
 import 'package:note/injectable.dart';
 import 'package:note/presentation/routes/router.gr.dart';
 import 'package:styled_widget/styled_widget.dart';
+import 'package:time/time.dart';
 
 class SignInScreen extends StatelessWidget {
   @override
@@ -31,6 +32,7 @@ class SignInScreen extends StatelessWidget {
                       emailAlreadyInUse: (_) => 'Email already in use', 
                       invalidEmailAndPasswordCombination: (_) =>
                           'Invalid email and password combination'),
+                    duration: 5.seconds
                   ).show(context);
                 }, 
                 (r){

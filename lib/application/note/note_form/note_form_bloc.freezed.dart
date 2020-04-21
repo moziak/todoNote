@@ -30,7 +30,7 @@ class _$NoteFormEventTearOff {
     );
   }
 
-  _TodosChanged todosChanged(KtList<dynamic> todos) {
+  _TodosChanged todosChanged(KtList<TodoItemPrimitive> todos) {
     return _TodosChanged(
       todos,
     );
@@ -50,7 +50,7 @@ mixin _$NoteFormEvent {
     @required Result initialized(Option<Note> initialNoteOption),
     @required Result bodyChanged(String bodyStr),
     @required Result colorChanged(Color color),
-    @required Result todosChanged(KtList<dynamic> todos),
+    @required Result todosChanged(KtList<TodoItemPrimitive> todos),
     @required Result saved(),
   });
   @optionalTypeArgs
@@ -58,7 +58,7 @@ mixin _$NoteFormEvent {
     Result initialized(Option<Note> initialNoteOption),
     Result bodyChanged(String bodyStr),
     Result colorChanged(Color color),
-    Result todosChanged(KtList<dynamic> todos),
+    Result todosChanged(KtList<TodoItemPrimitive> todos),
     Result saved(),
     @required Result orElse(),
   });
@@ -160,7 +160,7 @@ class _$_Initialized implements _Initialized {
     @required Result initialized(Option<Note> initialNoteOption),
     @required Result bodyChanged(String bodyStr),
     @required Result colorChanged(Color color),
-    @required Result todosChanged(KtList<dynamic> todos),
+    @required Result todosChanged(KtList<TodoItemPrimitive> todos),
     @required Result saved(),
   }) {
     assert(initialized != null);
@@ -177,7 +177,7 @@ class _$_Initialized implements _Initialized {
     Result initialized(Option<Note> initialNoteOption),
     Result bodyChanged(String bodyStr),
     Result colorChanged(Color color),
-    Result todosChanged(KtList<dynamic> todos),
+    Result todosChanged(KtList<TodoItemPrimitive> todos),
     Result saved(),
     @required Result orElse(),
   }) {
@@ -289,7 +289,7 @@ class _$_BodyChanged implements _BodyChanged {
     @required Result initialized(Option<Note> initialNoteOption),
     @required Result bodyChanged(String bodyStr),
     @required Result colorChanged(Color color),
-    @required Result todosChanged(KtList<dynamic> todos),
+    @required Result todosChanged(KtList<TodoItemPrimitive> todos),
     @required Result saved(),
   }) {
     assert(initialized != null);
@@ -306,7 +306,7 @@ class _$_BodyChanged implements _BodyChanged {
     Result initialized(Option<Note> initialNoteOption),
     Result bodyChanged(String bodyStr),
     Result colorChanged(Color color),
-    Result todosChanged(KtList<dynamic> todos),
+    Result todosChanged(KtList<TodoItemPrimitive> todos),
     Result saved(),
     @required Result orElse(),
   }) {
@@ -419,7 +419,7 @@ class _$_ColorChanged implements _ColorChanged {
     @required Result initialized(Option<Note> initialNoteOption),
     @required Result bodyChanged(String bodyStr),
     @required Result colorChanged(Color color),
-    @required Result todosChanged(KtList<dynamic> todos),
+    @required Result todosChanged(KtList<TodoItemPrimitive> todos),
     @required Result saved(),
   }) {
     assert(initialized != null);
@@ -436,7 +436,7 @@ class _$_ColorChanged implements _ColorChanged {
     Result initialized(Option<Note> initialNoteOption),
     Result bodyChanged(String bodyStr),
     Result colorChanged(Color color),
-    Result todosChanged(KtList<dynamic> todos),
+    Result todosChanged(KtList<TodoItemPrimitive> todos),
     Result saved(),
     @required Result orElse(),
   }) {
@@ -493,7 +493,7 @@ abstract class _$TodosChangedCopyWith<$Res> {
   factory _$TodosChangedCopyWith(
           _TodosChanged value, $Res Function(_TodosChanged) then) =
       __$TodosChangedCopyWithImpl<$Res>;
-  $Res call({KtList<dynamic> todos});
+  $Res call({KtList<TodoItemPrimitive> todos});
 }
 
 class __$TodosChangedCopyWithImpl<$Res>
@@ -511,7 +511,7 @@ class __$TodosChangedCopyWithImpl<$Res>
     Object todos = freezed,
   }) {
     return _then(_TodosChanged(
-      todos == freezed ? _value.todos : todos as KtList<dynamic>,
+      todos == freezed ? _value.todos : todos as KtList<TodoItemPrimitive>,
     ));
   }
 }
@@ -520,7 +520,7 @@ class _$_TodosChanged implements _TodosChanged {
   const _$_TodosChanged(this.todos) : assert(todos != null);
 
   @override
-  final KtList<dynamic> todos;
+  final KtList<TodoItemPrimitive> todos;
 
   @override
   String toString() {
@@ -549,7 +549,7 @@ class _$_TodosChanged implements _TodosChanged {
     @required Result initialized(Option<Note> initialNoteOption),
     @required Result bodyChanged(String bodyStr),
     @required Result colorChanged(Color color),
-    @required Result todosChanged(KtList<dynamic> todos),
+    @required Result todosChanged(KtList<TodoItemPrimitive> todos),
     @required Result saved(),
   }) {
     assert(initialized != null);
@@ -566,7 +566,7 @@ class _$_TodosChanged implements _TodosChanged {
     Result initialized(Option<Note> initialNoteOption),
     Result bodyChanged(String bodyStr),
     Result colorChanged(Color color),
-    Result todosChanged(KtList<dynamic> todos),
+    Result todosChanged(KtList<TodoItemPrimitive> todos),
     Result saved(),
     @required Result orElse(),
   }) {
@@ -613,9 +613,10 @@ class _$_TodosChanged implements _TodosChanged {
 }
 
 abstract class _TodosChanged implements NoteFormEvent {
-  const factory _TodosChanged(KtList<dynamic> todos) = _$_TodosChanged;
+  const factory _TodosChanged(KtList<TodoItemPrimitive> todos) =
+      _$_TodosChanged;
 
-  KtList<dynamic> get todos;
+  KtList<TodoItemPrimitive> get todos;
   _$TodosChangedCopyWith<_TodosChanged> get copyWith;
 }
 
@@ -655,7 +656,7 @@ class _$_Saved implements _Saved {
     @required Result initialized(Option<Note> initialNoteOption),
     @required Result bodyChanged(String bodyStr),
     @required Result colorChanged(Color color),
-    @required Result todosChanged(KtList<dynamic> todos),
+    @required Result todosChanged(KtList<TodoItemPrimitive> todos),
     @required Result saved(),
   }) {
     assert(initialized != null);
@@ -672,7 +673,7 @@ class _$_Saved implements _Saved {
     Result initialized(Option<Note> initialNoteOption),
     Result bodyChanged(String bodyStr),
     Result colorChanged(Color color),
-    Result todosChanged(KtList<dynamic> todos),
+    Result todosChanged(KtList<TodoItemPrimitive> todos),
     Result saved(),
     @required Result orElse(),
   }) {

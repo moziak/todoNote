@@ -78,7 +78,7 @@ class NoteRepository implements INoteRepository {
 
       await userDoc.noteCollection
           .document(noteDto.id)
-          .setData(noteDto.toJson());
+          .setData(noteDto.toJson()).then((value) => right(value));
 
       return right(unit);
     } on PlatformException catch (e) {

@@ -75,7 +75,7 @@ class NoteScreen extends HookWidget implements AutoRouteWrapper {
         body: NotesOverviewBody(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.noteFormScreen);
+            ExtendedNavigator.ofRouter<Router>().pushNamed(Routes.noteFormScreen, arguments: NoteFormScreenArguments(editedNote: null));
           },
           child: Icon(Icons.add),
         ),
